@@ -38,55 +38,56 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="section bg-gray-50">
+    <section id="portfolio" className="section bg-gray-50 overflow-hidden">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="section-title">Our Portfolio</h2>
-          <p className="section-subtitle">
+          <h2 className="section-title animate-fade-in-up">Our Portfolio</h2>
+          <p className="section-subtitle animate-fade-in-up animation-delay-200">
             Take a look at some of our recent work and see how we've helped businesses succeed online
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 ${
+              className={`bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-3 group animate-fade-in-up card-hover ${
                 project.featured ? 'ring-2 ring-blue-500' : ''
               }`}
+              style={{ animationDelay: `${(index + 1) * 0.15}s` }}
             >
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 {project.comingSoon && (
-                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                    <span className="text-white text-lg font-semibold">Coming Soon</span>
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm">
+                    <span className="text-white text-lg font-semibold animate-pulse">Coming Soon</span>
                   </div>
                 )}
                 {project.featured && (
-                  <div className="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium animate-bounce">
                     Featured
                   </div>
                 )}
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                   {project.description}
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, index) => (
+                  {project.technologies.map((tech, techIndex) => (
                     <span
-                      key={index}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                      key={techIndex}
+                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full group-hover:bg-blue-100 group-hover:text-blue-700 transition-all duration-300"
                     >
                       {tech}
                     </span>
@@ -98,22 +99,22 @@ const Portfolio = () => {
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
-                        className="flex-1 btn btn-primary justify-center"
+                        className="flex-1 btn-animated bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-2 rounded-lg text-center font-medium hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Globe className="h-4 w-4 mr-2" />
+                        <Globe className="h-4 w-4 mr-2 inline" />
                         Live Demo
                       </a>
                     )}
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
-                        className="flex-1 btn btn-secondary justify-center"
+                        className="flex-1 btn-animated bg-gray-600 text-white px-4 py-2 rounded-lg text-center font-medium hover:shadow-lg transform hover:-translate-y-1 hover:scale-105 transition-all duration-300"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Github className="h-4 w-4 mr-2" />
+                        <Github className="h-4 w-4 mr-2 inline" />
                         Code
                       </a>
                     )}
@@ -124,8 +125,8 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+        <div className="text-center mt-16 animate-fade-in-up animation-delay-600">
+          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover-lift">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               Want to See Your Project Here?
             </h3>
@@ -133,7 +134,7 @@ const Portfolio = () => {
               Let's work together to create something amazing that showcases your business 
               and helps you achieve your goals online.
             </p>
-            <a href="#contact" className="btn btn-primary text-lg px-8 py-4">
+            <a href="#contact" className="btn-animated inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
               Start Your Project
             </a>
           </div>

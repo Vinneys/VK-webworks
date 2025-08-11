@@ -42,11 +42,11 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="section bg-white">
+    <section id="services" className="section bg-white overflow-hidden">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="section-title">Our Services</h2>
-          <p className="section-subtitle">
+          <h2 className="section-title animate-fade-in-up">Our Services</h2>
+          <p className="section-subtitle animate-fade-in-up animation-delay-200">
             We offer comprehensive web development services to help your business succeed online
           </p>
         </div>
@@ -55,24 +55,25 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-3 group animate-fade-in-up card-hover"
+              style={{ animationDelay: `${(index + 1) * 0.1}s` }}
             >
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
               
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
                 {service.title}
               </h3>
               
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                 {service.description}
               </p>
               
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                  <li key={featureIndex} className="flex items-center text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></div>
                     {feature}
                   </li>
                 ))}
@@ -81,8 +82,8 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-100">
+        <div className="text-center mt-16 animate-fade-in-up animation-delay-600">
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-100 hover-lift">
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               Ready to Get Started?
             </h3>
@@ -90,7 +91,7 @@ const Services = () => {
               Let's discuss your project and create something amazing together. 
               We'll work closely with you to understand your needs and deliver a solution that exceeds expectations.
             </p>
-            <a href="#contact" className="btn btn-primary text-lg px-8 py-4">
+            <a href="#contact" className="btn-animated inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300">
               Let's Talk About Your Project
             </a>
           </div>
